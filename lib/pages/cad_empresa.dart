@@ -114,7 +114,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                     ),
 
                   ),
-  /*
+  
                   SizedBox(
                     height: 20,
                   ),
@@ -252,7 +252,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                     ),
 
                   ),
-  */
+  
                   SizedBox(
                     height: 20,
                   ),
