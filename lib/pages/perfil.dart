@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jasaiu/pages/cad_empresa.dart';
+import 'package:jasaiu/pages/cad_aluno.dart';
 import 'package:jasaiu/pages/cad_itinerario.dart';
+import 'package:jasaiu/pages/cad_motorista.dart';
 import 'package:jasaiu/pages/cad_onibus.dart';
 import 'package:jasaiu/pages/home.dart';
 
@@ -14,10 +15,10 @@ class _PerfilState extends State<Perfil> {
   int _selectedTab = 4;
   final _pageOptions = [
     Home(),
-    CadEmpresa(),
+    CadMotorista(),
     CadOnibus(),
     CadItinerario(),
-    Perfil(),
+    CadAluno(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -38,8 +39,8 @@ class _PerfilState extends State<Perfil> {
                 backgroundColor: Colors.blue[800],
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.notifications),
-                title: Text('Alarme'),
+                icon: Icon(Icons.people),
+                title: Text('Motoristas'),
                 backgroundColor: Colors.blue[800],
             ),
             BottomNavigationBarItem(
@@ -54,7 +55,7 @@ class _PerfilState extends State<Perfil> {
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person),
-                title: Text('Perfil'),
+                title: Text('Alunos'),
                 backgroundColor: Colors.blue[800],
             ),
         ],
