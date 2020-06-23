@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import './pages/home.dart';
+import 'package:jasaiu/pages/escolha.dart';
 
 void main() => runApp(MaterialApp(
   title: 'Já Saiu?',
-  home: Home(),
+  home: Escolha(),
   debugShowCheckedModeBanner: false,
 ));

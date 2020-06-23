@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/pages/cad_empresa.dart';
+import './login.dart';
 
 class Escolha extends StatefulWidget {
   @override
@@ -60,7 +62,9 @@ class _EscolhaState extends State<Escolha> {
                     ),
                     
                     color: Colors.blue[800],
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login() ) )
+                    },
 
                   ),
                 ),
@@ -78,7 +82,9 @@ class _EscolhaState extends State<Escolha> {
                     ),
                     
                     color: Colors.blue[800],
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadEmpresa() ) )
+                    },
 
                   ),
                 ),

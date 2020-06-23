@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/pages/cad_empresa.dart';
+import 'package:jasaiu/pages/cad_itinerario.dart';
+import 'package:jasaiu/pages/cad_onibus.dart';
+import 'package:jasaiu/pages/home.dart';
 
 class Perfil extends StatefulWidget {
   @override
@@ -7,20 +11,55 @@ class Perfil extends StatefulWidget {
 }
 
 class _PerfilState extends State<Perfil> {
+  int _selectedTab = 4;
+  final _pageOptions = [
+    Home(),
+    CadEmpresa(),
+    CadOnibus(),
+    CadItinerario(),
+    Perfil(),
+  ];
   @override
   Widget build(BuildContext context) {
-    return Stack( // <-- STACK AS THE SCAFFOLD PARENT
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/background-branco.jpg"), // <-- BACKGROUND IMAGE
-              fit: BoxFit.cover,
+    return Scaffold(
+        body: _pageOptions[_selectedTab], 
+        
+        bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedTab,
+        onTap: (int index) {
+          setState(() {
+              _selectedTab = index;
+          });
+        },
+        items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.location_on),
+                title: Text('Home'),
+                backgroundColor: Colors.blue[800],
             ),
-          ),
-        ),
-
-      ]
+            BottomNavigationBarItem(
+                icon: Icon(Icons.notifications),
+                title: Text('Alarme'),
+                backgroundColor: Colors.blue[800],
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.directions_bus),
+                title: Text('Ônibus'),
+                backgroundColor: Colors.blue[800],
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.map),
+                title: Text('Itinerários'),
+                backgroundColor: Colors.blue[800],
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                title: Text('Perfil'),
+                backgroundColor: Colors.blue[800],
+            ),
+        ],
+      ),
+      
     );
     
   }

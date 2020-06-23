@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/pages/perfil.dart';
+import 'package:jasaiu/pages/senha.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -106,7 +108,9 @@ class _LoginState extends State<Login> {
                     ),
                     
                     color: Colors.blue[800],
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Perfil() ) )
+                    },
 
                   ),
                 ),
@@ -126,12 +130,7 @@ class _LoginState extends State<Login> {
                     ),
 
                     onPressed: () => {
-                      /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Senha(),
-                        ),
-                      );*/
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Senha() ) )
                     }, 
                     
                   ),
