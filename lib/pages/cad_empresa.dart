@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/menu.dart';
 import 'package:jasaiu/pages/escolha.dart';
 import 'package:jasaiu/pages/home.dart';
 
@@ -272,7 +273,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                       
                       color: Colors.blue[800],
                       onPressed: () => {
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Home() ) )
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) )
                       },
 
                     ),
