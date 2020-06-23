@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CadEmpresa extends StatefulWidget {
+class CadAluno extends StatefulWidget {
   @override
-  _CadEmpresaState createState() => _CadEmpresaState();
+  _CadAlunoState createState() => _CadAlunoState();
 }
 
-class _CadEmpresaState extends State<CadEmpresa> {
+class _CadAlunoState extends State<CadAluno> {
   @override
   Widget build(BuildContext context) {
     return Stack( // <-- STACK AS THE SCAFFOLD PARENT

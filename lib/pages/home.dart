@@ -1,5 +1,11 @@
 
 import 'package:flutter/material.dart';
+import './perfil.dart';
+import './cad_onibus.dart';
+import './cad_itinerario.dart';
+import './cad_empresa.dart';
+
+
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -9,73 +15,55 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Alarmes',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Ônibus',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Itinerários',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 4: Perfil',
-      style: optionStyle,
-    ),
+ 
+  int _selectedTab = 0;
+  final _pageOptions = [
+    Home(),
+    CadEmpresa(),
+    CadOnibus(),
+    CadItinerario(),
+    Perfil(),
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _pageOptions[_selectedTab],
+
+      
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.location_on),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            title: Text('Alarmes'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.directions_bus),
-            title: Text('Ônibus'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.directions),
-            title: Text('Itinerários'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Perfil'),
-          ),
+        currentIndex: _selectedTab,
+        onTap: (int index) {
+          setState(() {
+              _selectedTab = index;
+          });
+        },
+        items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.location_on),
+                title: Text('Home'),
+                backgroundColor: Colors.blue[800],
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.notifications),
+                title: Text('Alarme'),
+                backgroundColor: Colors.blue[800],
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.directions_bus),
+                title: Text('Ônibus'),
+                backgroundColor: Colors.blue[800],
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.map),
+                title: Text('Itinerários'),
+                backgroundColor: Colors.blue[800],
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                title: Text('Perfil'),
+                backgroundColor: Colors.blue[800],
+            ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
-        onTap: _onItemTapped,
       ),
     );
   }
