@@ -32,130 +32,131 @@ class _LoginState extends State<Login> {
           ),
 
           child: Center (
+            child: SingleChildScrollView(
+              child: Column(
+        
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
 
-            child: Column(
-      
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-
-                SizedBox(
-                  width: 128,
-                  height: 128,
-                  child: Image.asset("assets/logo_JaSaiu.png")
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
+                  SizedBox(
+                    width: 128,
+                    height: 128,
+                    child: Image.asset("assets/logo_JaSaiu.png")
                   ),
 
-                  decoration: InputDecoration(
-                    labelText: "CPF ou e-mail",
-                    labelStyle: TextStyle(
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
+                      fontSize: 20
                     ),
-                  ),
 
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-                TextFormField(
-
-                  autofocus: true,
-                  obscureText: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Senha",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-                ButtonTheme(
-
-                  height: 60,
-                  child: RaisedButton( 
-
-                    child: Text(
-                      "Entrar",
-                      style: TextStyle(
-                        color: Colors.white,
+                    decoration: InputDecoration(
+                      labelText: "CPF ou e-mail",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
                         fontSize: 20,
                       ),
                     ),
-                    
-                    color: Colors.blue[800],
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Perfil() ) )
-                    },
 
                   ),
-                ),
 
-                SizedBox(
-                  height: 20,
-                ),
-                
-                Container(
+                  SizedBox(
+                    height: 20,
+                  ),
 
-                  height: 40,
-                  alignment: Alignment.centerRight,
-                  child: FlatButton(
-                    child: Text(
-                      "Recuperar Senha",
-                      textAlign: TextAlign.right,
+                  TextFormField(
+
+                    autofocus: true,
+                    obscureText: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
                     ),
 
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Senha() ) )
-                    }, 
-                    
-                  ),
-
-                ),
-
-                Container(
-
-                  height: 40,
-                  alignment: Alignment.center,
-                  child: FlatButton(
-                    child: Text(
-                      "Cancelar",
-                      textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      labelText: "Senha",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                      ),
                     ),
 
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Escolha() ) )
-                    }, 
-                    
                   ),
 
-                ),
-              ],
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  ButtonTheme(
+
+                    height: 60,
+                    child: RaisedButton( 
+
+                      child: Text(
+                        "Entrar",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                      
+                      color: Colors.blue[800],
+                      onPressed: () => {
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Perfil() ) )
+                      },
+
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  Container(
+
+                    height: 40,
+                    alignment: Alignment.centerRight,
+                    child: FlatButton(
+                      child: Text(
+                        "Recuperar Senha",
+                        textAlign: TextAlign.right,
+                      ),
+
+                      onPressed: () => {
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Senha() ) )
+                      }, 
+                      
+                    ),
+
+                  ),
+
+                  Container(
+
+                    height: 40,
+                    alignment: Alignment.center,
+                    child: FlatButton(
+                      child: Text(
+                        "Cancelar",
+                        textAlign: TextAlign.center,
+                      ),
+
+                      onPressed: () => {
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Escolha() ) )
+                      }, 
+                      
+                    ),
+
+                  ),
+                ],
+              )
             )
           )
         )

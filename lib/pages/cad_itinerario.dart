@@ -30,188 +30,191 @@ class _CadItinerarioState extends State<CadItinerario> {
 
           child: Center (
 
-            child: Column(
-      
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+            child: SingleChildScrollView(
+              
+              child: Column(
+        
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
 
-                SizedBox(
-                  width: 128,
-                  height: 128,
-                  child: Image.asset("assets/logo_JaSaiu.png")
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
+                  SizedBox(
+                    width: 128,
+                    height: 128,
+                    child: Image.asset("assets/logo_JaSaiu.png")
                   ),
 
-                  decoration: InputDecoration(
-                    labelText: "Período",
-                    labelStyle: TextStyle(
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
+                      fontSize: 20
                     ),
-                  ),
 
-                ),
- 
-                SizedBox(
-                  height: 20,
-                ),
-                
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.datetime,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Hora da Saída",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-               
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.datetime,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Hora da Volta",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
- 
-                SizedBox(
-                  height: 20,
-                ),
-                 
-                Text(
-                  "Trajeto da Ida",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 25,
-
-                  ),
-                ),
-
-                SizedBox(
-                  height: 10,
-                ),
-                 
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Ponto de Referência/Bairro",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-                 
-                Text(
-                  "Trajeto da Volta",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 25,
-
-                  ),
-                ),
-
-                SizedBox(
-                  height: 10,
-                ),
-                 
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Ponto de Referência/Bairro",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
-
-                       
-
-                SizedBox(
-                  height: 20,
-                ),
-                
-                ButtonTheme(
-
-                  height: 60,
-                  child: RaisedButton( 
-
-                    child: Text(
-                      "Cadastrar",
-                      style: TextStyle(
-                        color: Colors.white,
+                    decoration: InputDecoration(
+                      labelText: "Período",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
                         fontSize: 20,
                       ),
                     ),
-                    
-                    color: Colors.blue[800],
-                    onPressed: () => {},
 
                   ),
-                ),
+  
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.datetime,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
 
-              ],
+                    decoration: InputDecoration(
+                      labelText: "Hora da Saída",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.datetime,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Hora da Volta",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+  
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  Text(
+                    "Trajeto da Ida",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 25,
+
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 10,
+                  ),
+                  
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Ponto de Referência/Bairro",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  Text(
+                    "Trajeto da Volta",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 25,
+
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 10,
+                  ),
+                  
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Ponto de Referência/Bairro",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+
+                        
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  ButtonTheme(
+
+                    height: 60,
+                    child: RaisedButton( 
+
+                      child: Text(
+                        "Cadastrar",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                      
+                      color: Colors.blue[800],
+                      onPressed: () => {},
+
+                    ),
+                  ),
+
+                ],
+              )
             )
           )
         )

@@ -30,228 +30,231 @@ class _CadOnibusState extends State<CadOnibus> {
 
           child: Center (
 
-            child: Column(
-      
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+            child: SingleChildScrollView(
+              
+              child: Column(
+        
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
 
-                SizedBox(
-                  width: 128,
-                  height: 128,
-                  child: Image.asset("assets/logo_JaSaiu.png")
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
+                  SizedBox(
+                    width: 128,
+                    height: 128,
+                    child: Image.asset("assets/logo_JaSaiu.png")
                   ),
 
-                  decoration: InputDecoration(
-                    labelText: "Nome Completo do Dono",
-                    labelStyle: TextStyle(
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
+                      fontSize: 20
                     ),
-                  ),
 
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-               
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.emailAddress,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "E-mail para Contato",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
- 
-                SizedBox(
-                  height: 20,
-                ),
-                 
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.phone,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Número de Telefone",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-                
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Marca",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
-               
-                SizedBox(
-                  height: 20,
-                ),
-                
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Modelo",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
- 
-                SizedBox(
-                  height: 20,
-                ),
-                
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Placa",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
-
-
-                SizedBox(
-                  height: 20,
-                ),
-                
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Cidade",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-                
-                TextFormField(
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: new TextStyle(
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
-
-                  decoration: InputDecoration(
-                    labelText: "Estado",
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-                
-                ButtonTheme(
-
-                  height: 60,
-                  child: RaisedButton( 
-
-                    child: Text(
-                      "Cadastrar",
-                      style: TextStyle(
-                        color: Colors.white,
+                    decoration: InputDecoration(
+                      labelText: "Nome Completo do Dono",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
                         fontSize: 20,
                       ),
                     ),
-                    
-                    color: Colors.blue[800],
-                    onPressed: () => {},
 
                   ),
-                ),
 
-              ],
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.emailAddress,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "E-mail para Contato",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+  
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.phone,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Número de Telefone",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Marca",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+                
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Modelo",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+  
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Placa",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Cidade",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  TextFormField(
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Estado",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
+                  ButtonTheme(
+
+                    height: 60,
+                    child: RaisedButton( 
+
+                      child: Text(
+                        "Cadastrar",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                      
+                      color: Colors.blue[800],
+                      onPressed: () => {},
+
+                    ),
+                  ),
+
+                ],
+              )
             )
           )
         )
