@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/pages/escolha.dart';
 import 'package:jasaiu/pages/perfil.dart';
 import 'package:jasaiu/pages/senha.dart';
 
@@ -137,6 +138,23 @@ class _LoginState extends State<Login> {
 
                 ),
 
+                Container(
+
+                  height: 40,
+                  alignment: Alignment.center,
+                  child: FlatButton(
+                    child: Text(
+                      "Cancelar",
+                      textAlign: TextAlign.center,
+                    ),
+
+                    onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Escolha() ) )
+                    }, 
+                    
+                  ),
+
+                ),
               ],
             )
           )

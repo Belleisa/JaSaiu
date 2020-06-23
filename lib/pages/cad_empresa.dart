@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/pages/escolha.dart';
+import 'package:jasaiu/pages/home.dart';
 
 class CadEmpresa extends StatefulWidget {
   @override
@@ -110,7 +112,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
 
                 ),
-
+/*
                 SizedBox(
                   height: 20,
                 ),
@@ -248,7 +250,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
 
                 ),
-
+*/
                 SizedBox(
                   height: 20,
                 ),
@@ -267,11 +269,14 @@ class _CadEmpresaState extends State<CadEmpresa> {
                     ),
                     
                     color: Colors.blue[800],
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Home() ) )
+                    },
 
                   ),
                 ),
 
+              
                 SizedBox(
                   height: 20,
                 ),
@@ -279,20 +284,15 @@ class _CadEmpresaState extends State<CadEmpresa> {
                 Container(
 
                   height: 40,
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.center,
                   child: FlatButton(
                     child: Text(
-                      "Recuperar Senha",
-                      textAlign: TextAlign.right,
+                      "Cancelar",
+                      textAlign: TextAlign.center,
                     ),
 
                     onPressed: () => {
-                      /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Senha(),
-                        ),
-                      );*/
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Escolha() ) )
                     }, 
                     
                   ),

@@ -68,6 +68,11 @@ class _EscolhaState extends State<Escolha> {
 
                   ),
                 ),
+                
+                SizedBox(
+                  height: 20,
+                ),
+
                 ButtonTheme(
 
                   height: 60,
