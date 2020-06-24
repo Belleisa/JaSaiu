@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "597611835078",
+    "firebase_url": "https://jasaiu.firebaseio.com",
+    "project_id": "jasaiu",
+    "storage_bucket": "jasaiu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597611835078:android:c772a395f0f6ab6877b1c7",
+        "android_client_info": {
+          "package_name": "com.example.jasaiu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597611835078-496pp0hptgpjq3j3o5tkoppi4k6j11hr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jasaiu",
+            "certificate_hash": "b5bee967e36e56ea252d8dc6b6c001ffcfa139a7"
+          }
+        },
+        {
+          "client_id": "597611835078-0eh3n3tqaksgq6qoatunjcttve27cluv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtKpAAzIrCiPNOz1vO_P2fwIiHIv_8tDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597611835078-0eh3n3tqaksgq6qoatunjcttve27cluv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
