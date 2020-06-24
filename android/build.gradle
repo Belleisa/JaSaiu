@@ -3,11 +3,12 @@ buildscript {
     repositories {
         google()
         jcenter()
+        // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-sqs
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
-        classpath 'com.google.gms:google-service:4.3.3'
+        classpath 'com.google.gms:google-services:4.3.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -16,6 +17,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-sqs
+        compile group: 'com.amazonaws', name: 'aws-java-sdk-sqs', version: '1.11.808'
     }
 }
 

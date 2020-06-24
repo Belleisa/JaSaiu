@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jasaiu/pages/cad_empresa.dart';
-import './login.dart';
+import 'package:jasaiu/pages/cadastros/cad_empresa.dart';
+import 'package:jasaiu/pages/login.dart';
 
 class Escolha extends StatefulWidget {
   @override

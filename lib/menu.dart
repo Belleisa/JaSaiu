@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:jasaiu/pages/cad_aluno.dart';
-import 'package:jasaiu/pages/cad_motorista.dart';
-import './pages/cad_onibus.dart';
-import './pages/cad_itinerario.dart';
-import './pages/home.dart';
+import 'package:jasaiu/pages/cadastros/cad_aluno.dart';
+import 'package:jasaiu/pages/cadastros/cad_motorista.dart';
+import 'package:jasaiu/pages/cadastros/cad_onibus.dart';
+import 'package:jasaiu/pages/cadastros/cad_itinerario.dart';
+import 'package:jasaiu/pages/home.dart';
 
 
 

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jasaiu/menu.dart';
 import 'package:jasaiu/pages/escolha.dart';
-import 'package:jasaiu/pages/home.dart';
 import 'package:jasaiu/pages/senha.dart';
 
 class Login extends StatefulWidget {
