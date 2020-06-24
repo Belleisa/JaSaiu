@@ -320,6 +320,9 @@ class _CadMotoristaState extends State<CadMotorista> {
                     ),
                   ),
 
+                  SizedBox(
+                    height: 50,
+                  ),
                 
                 ],
               )

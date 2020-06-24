@@ -320,6 +320,9 @@ class _CadAlunoState extends State<CadAluno> {
                     ),
                   ),
 
+                  SizedBox(
+                    height: 50,
+                  ),
                 ],
               )
             )

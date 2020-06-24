@@ -253,6 +253,9 @@ class _CadOnibusState extends State<CadOnibus> {
                     ),
                   ),
 
+                  SizedBox(
+                    height: 50,
+                  ),
                 ],
               )
             )

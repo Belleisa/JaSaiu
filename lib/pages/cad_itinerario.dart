@@ -115,7 +115,7 @@ class _CadItinerarioState extends State<CadItinerario> {
                   ),
   
                   SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   
                   Text(
@@ -123,8 +123,8 @@ class _CadItinerarioState extends State<CadItinerario> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
-                        fontSize: 25,
-
+                        fontSize: 20,
+                      
                     ),
                   ),
 
@@ -152,7 +152,7 @@ class _CadItinerarioState extends State<CadItinerario> {
                   ),
 
                   SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   
                   Text(
@@ -160,7 +160,7 @@ class _CadItinerarioState extends State<CadItinerario> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
-                        fontSize: 25,
+                        fontSize: 20,
 
                     ),
                   ),
@@ -213,6 +213,9 @@ class _CadItinerarioState extends State<CadItinerario> {
                     ),
                   ),
 
+                  SizedBox(
+                    height: 50,
+                  ),
                 ],
               )
             )

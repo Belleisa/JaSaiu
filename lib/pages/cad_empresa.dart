@@ -281,7 +281,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
 
                 
                   SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   
                   Container(
@@ -302,6 +302,9 @@ class _CadEmpresaState extends State<CadEmpresa> {
 
                   ),
 
+                  SizedBox(
+                    height: 20,
+                  ),
                 ],
               )
             )
