@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:jasaiu/pages/cadastros/cad_aluno.dart';
-import 'package:jasaiu/pages/cadastros/cad_motorista.dart';
-import 'package:jasaiu/pages/cadastros/cad_onibus.dart';
-import 'package:jasaiu/pages/cadastros/cad_itinerario.dart';
 import 'package:jasaiu/pages/home.dart';
+import 'package:jasaiu/pages/listas/lista_alunos.dart';
+import 'package:jasaiu/pages/listas/lista_itinerarios.dart';
+import 'package:jasaiu/pages/listas/lista_motoristas.dart';
+import 'package:jasaiu/pages/listas/lista_onibus.dart';
 
 
 
@@ -20,10 +20,10 @@ class _MenuState extends State<Menu> {
   int _selectedTab = 0;
   final _pageOptions = [
     Home(),
-    CadMotorista(),
-    CadOnibus(),
-    CadItinerario(),
-    CadAluno(),
+    ListaMotoristas(),
+    ListaOnibus(),
+    ListaItinerarios,
+    ListaAlunos(),
   ];
   @override
   Widget build(BuildContext context) {
