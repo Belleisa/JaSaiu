@@ -1,25 +1,43 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/model/itinerarios.dart';
 
 class CadItinerario extends StatefulWidget {
+
+  final Itinerario itinerario;
+  CadItinerario(this.itinerario);
+
   @override
   _CadItinerarioState createState() => _CadItinerarioState();
 }
 
 class _CadItinerarioState extends State<CadItinerario> {
+
+  final db = Firestore.instance;
+
+  TextEditingController _linhaController;
+  TextEditingController _periodoController;
+  TextEditingController _horaidaController;
+  TextEditingController _horavoltaController;
+
+  @override
+  void initState() {
+    super.initState();
+    _linhaController = new TextEditingController(text: widget.itinerario.linha);
+    _periodoController = new TextEditingController(text: widget.itinerario.periodo);
+    _horaidaController = new TextEditingController(text: widget.itinerario.horaida);
+    _horavoltaController = new TextEditingController(text: widget.itinerario.horavolta);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack( // <-- STACK AS THE SCAFFOLD PARENT
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/background-branco.jpg"), // <-- BACKGROUND IMAGE
-              fit: BoxFit.cover,
-            ),
-          ),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Cadastro de Itinerários"),
+          centerTitle: true,
+          backgroundColor: Colors.blue[800],
         ),
-      Scaffold(
         body: Container (
           
           padding: EdgeInsets.only(
@@ -37,18 +55,36 @@ class _CadItinerarioState extends State<CadItinerario> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-
-                  SizedBox(
-                    width: 128,
-                    height: 128,
-                    child: Image.asset("assets/logo_JaSaiu.png")
-                  ),
-
                   SizedBox(
                     height: 20,
                   ),
 
                   TextFormField(
+                    controller: _linhaController,
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: new TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+
+                    decoration: InputDecoration(
+                      labelText: "Linha",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                    ),
+
+                  ),
+  
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  TextFormField(
+                    controller: _periodoController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -72,6 +108,7 @@ class _CadItinerarioState extends State<CadItinerario> {
                   ),
                   
                   TextFormField(
+                    controller: _horaidaController,
                     autofocus: true,
                     keyboardType: TextInputType.datetime,
                     style: new TextStyle(
@@ -96,6 +133,7 @@ class _CadItinerarioState extends State<CadItinerario> {
 
                 
                   TextFormField(
+                    controller: _horavoltaController,
                     autofocus: true,
                     keyboardType: TextInputType.datetime,
                     style: new TextStyle(
@@ -113,7 +151,7 @@ class _CadItinerarioState extends State<CadItinerario> {
                     ),
 
                   ),
-  
+  /*
                   SizedBox(
                     height: 40,
                   ),
@@ -187,7 +225,7 @@ class _CadItinerarioState extends State<CadItinerario> {
                     ),
 
                   ),
-
+*/
                         
 
                   SizedBox(
@@ -199,16 +237,35 @@ class _CadItinerarioState extends State<CadItinerario> {
                     height: 60,
                     child: RaisedButton( 
 
-                      child: Text(
-                        "Cadastrar",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                      
+                      child: (
+                        widget.itinerario.id != null) ? Text('Atualizar') : Text('Cadastrar'),
+                        textColor: Colors.white,
                       color: Colors.blue[800],
-                      onPressed: () => {},
+                      onPressed: () {
+
+                        if(widget.itinerario.id != null) {
+                          db.collection("itinerarios").document(widget.itinerario.id).setData(
+                            {
+                              "linha": _linhaController.text,
+                              "periodo": _periodoController.text,
+                              "horaida": _horaidaController.text,
+                              "horavolta": _horavoltaController.text,
+                            }
+                          );
+                          Navigator.pop(context);
+                        }else{
+                          db.collection("itinerarios").document(widget.itinerario.id).setData(
+                            {
+                              "linha": _linhaController.text,
+                              "periodo": _periodoController.text,
+                              "horaida": _horaidaController.text,
+                              "horavolta": _horavoltaController.text,
+                            }
+                          );
+                          Navigator.pop(context);
+                        }
+
+                      },
 
                     ),
                   ),
@@ -221,8 +278,7 @@ class _CadItinerarioState extends State<CadItinerario> {
             )
           )
         )
-      )
-      ]
+      
     );
     
   }

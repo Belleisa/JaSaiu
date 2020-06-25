@@ -88,7 +88,7 @@ class _EscolhaState extends State<Escolha> {
                     
                     color: Colors.blue[800],
                     onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadEmpresa() ) )
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadEmpresa(null) ) )
                     },
 
                   ),

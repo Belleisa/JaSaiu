@@ -94,7 +94,8 @@ class _ListaAlunosState extends State<ListaAlunos> {
                                 }
                               )
                             ],
-                          )
+                          ),
+                          onTap: ()=> _navegarParaAluno(context,items[index]),
                         );
                       },
                     );
@@ -108,9 +109,7 @@ class _ListaAlunosState extends State<ListaAlunos> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.blue[800],
-        onPressed: () => {
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadAluno() ) )
-        },
+        onPressed: () => _criarNovoAluno(context, Aluno(null,'','','','','','','','','','','','','','')),
       ),
     );
   }
@@ -126,5 +125,16 @@ class _ListaAlunosState extends State<ListaAlunos> {
     setState( () {
         items.removeAt(position);
     });
+  }
+
+  void _navegarParaAluno(BuildContext context, Aluno aluno) async {
+    await Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CadAluno(aluno)),
+    );
+  }
+  void _criarNovoAluno(BuildContext context, Aluno aluno) async {
+    await Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CadAluno(Aluno(null, '', '','','','','','','','','','','','',''))),
+    );
   }
 }

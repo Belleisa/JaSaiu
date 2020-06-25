@@ -1,25 +1,51 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/model/onibus.dart';
 
 class CadOnibus extends StatefulWidget {
+
+  final Onibus onibus;
+  CadOnibus(this.onibus);
+
   @override
   _CadOnibusState createState() => _CadOnibusState();
 }
 
 class _CadOnibusState extends State<CadOnibus> {
+
+  final db = Firestore.instance;
+
+  TextEditingController _nomeController;
+  TextEditingController _emailController;
+  TextEditingController _telefoneController;
+  TextEditingController _marcaController;
+  TextEditingController _modeloController;
+  TextEditingController _placaController;
+  TextEditingController _cidadeController;
+  TextEditingController _estadoController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nomeController = new TextEditingController(text: widget.onibus.nome);
+    _emailController = new TextEditingController(text: widget.onibus.email);
+    _telefoneController = new TextEditingController(text: widget.onibus.telefone);
+    _marcaController = new TextEditingController(text: widget.onibus.marca);
+    _modeloController = new TextEditingController(text: widget.onibus.modelo);
+    _placaController = new TextEditingController(text: widget.onibus.placa);
+    _cidadeController = new TextEditingController(text: widget.onibus.cidade);
+    _estadoController = new TextEditingController(text: widget.onibus.estado);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack( // <-- STACK AS THE SCAFFOLD PARENT
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/background-branco.jpg"), // <-- BACKGROUND IMAGE
-              fit: BoxFit.cover,
-            ),
-          ),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Cadastro de Onibus"),
+          centerTitle: true,
+          backgroundColor: Colors.blue[800],
         ),
-      Scaffold(
         body: Container (
           
           padding: EdgeInsets.only(
@@ -39,16 +65,11 @@ class _CadOnibusState extends State<CadOnibus> {
                 children: <Widget>[
 
                   SizedBox(
-                    width: 128,
-                    height: 128,
-                    child: Image.asset("assets/logo_JaSaiu.png")
-                  ),
-
-                  SizedBox(
                     height: 20,
                   ),
 
                   TextFormField(
+                    controller: _nomeController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -73,6 +94,7 @@ class _CadOnibusState extends State<CadOnibus> {
 
                 
                   TextFormField(
+                    controller: _emailController,
                     autofocus: true,
                     keyboardType: TextInputType.emailAddress,
                     style: new TextStyle(
@@ -96,6 +118,7 @@ class _CadOnibusState extends State<CadOnibus> {
                   ),
                   
                   TextFormField(
+                    controller: _telefoneController,
                     autofocus: true,
                     keyboardType: TextInputType.phone,
                     style: new TextStyle(
@@ -119,6 +142,7 @@ class _CadOnibusState extends State<CadOnibus> {
                   ),
                   
                   TextFormField(
+                    controller: _marcaController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -142,6 +166,7 @@ class _CadOnibusState extends State<CadOnibus> {
                   ),
                   
                   TextFormField(
+                    controller: _modeloController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -165,6 +190,7 @@ class _CadOnibusState extends State<CadOnibus> {
                   ),
                   
                   TextFormField(
+                    controller: _placaController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -189,6 +215,7 @@ class _CadOnibusState extends State<CadOnibus> {
                   ),
                   
                   TextFormField(
+                    controller: _cidadeController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -212,6 +239,7 @@ class _CadOnibusState extends State<CadOnibus> {
                   ),
                   
                   TextFormField(
+                    controller: _estadoController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -239,17 +267,42 @@ class _CadOnibusState extends State<CadOnibus> {
                     height: 60,
                     child: RaisedButton( 
 
-                      child: Text(
-                        "Cadastrar",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                      
+                      child: (
+                        widget.onibus.id != null) ? Text('Atualizar') : Text('Cadastrar'),
+                        textColor: Colors.white,
                       color: Colors.blue[800],
-                      onPressed: () => {},
+                      onPressed: () {
 
+                        if(widget.onibus.id != null) {
+                          db.collection("onibus").document(widget.onibus.id).setData(
+                            {
+                              "nome": _nomeController.text,
+                              "email": _emailController.text,
+                              "telefone": _telefoneController.text,
+                              "marca": _marcaController.text,
+                              "modelo": _modeloController.text,
+                              "placa": _placaController.text,
+                              "cidade": _cidadeController.text,
+                              "estado": _estadoController.text,
+                            }
+                          );
+                          Navigator.pop(context);
+                        }else{
+                          db.collection("onibus").document(widget.onibus.id).setData(
+                            {
+                              "nome": _nomeController.text,
+                              "email": _emailController.text,
+                              "telefone": _telefoneController.text,
+                              "marca": _marcaController.text,
+                              "modelo": _modeloController.text,
+                              "placa": _placaController.text,
+                              "cidade": _cidadeController.text,
+                              "estado": _estadoController.text,
+                            }
+                          );
+                          Navigator.pop(context);
+                        }
+                      },
                     ),
                   ),
 
@@ -261,9 +314,6 @@ class _CadOnibusState extends State<CadOnibus> {
             )
           )
         )
-      )
-      ]
-    );
-    
+      );
   }
 }

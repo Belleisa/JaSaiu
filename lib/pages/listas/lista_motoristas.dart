@@ -94,7 +94,9 @@ class _ListaMotoristasState extends State<ListaMotoristas> {
                                 }
                               )
                             ],
-                          )
+                          ),
+                          onTap: ()=> _navegarParaMotorista(context,items[index]),
+                        
                         );
                       },
                     );
@@ -108,9 +110,8 @@ class _ListaMotoristasState extends State<ListaMotoristas> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.blue[800],
-        onPressed: () => {
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadMotorista() ) )
-        },
+        onPressed: () => _criarNovoMotorista(context, Motorista(null,'','','','','','','','','','','','')),
+      
       ),
     );
   }
@@ -126,5 +127,16 @@ class _ListaMotoristasState extends State<ListaMotoristas> {
     setState( () {
         items.removeAt(position);
     });
+  }
+
+  void _navegarParaMotorista(BuildContext context, Motorista motorista) async {
+    await Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CadMotorista(motorista)),
+    );
+  }
+  void _criarNovoMotorista(BuildContext context, Motorista motorista) async {
+    await Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CadMotorista(Motorista(null, '', '','','','','','','','','','',''))),
+    );
   }
 }

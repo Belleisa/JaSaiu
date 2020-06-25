@@ -94,7 +94,9 @@ class _ListaItinerariosState extends State<ListaItinerarios> {
                                 }
                               )
                             ],
-                          )
+                          ),
+                          onTap: ()=> _navegarParaItinerario(context,items[index]),
+                        
                         );
                       },
                     );
@@ -108,9 +110,7 @@ class _ListaItinerariosState extends State<ListaItinerarios> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.blue[800],
-        onPressed: () => {
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadItinerario() ) )
-        },
+        onPressed: () => _criarNovoItinerario(context, Itinerario(null,'','','','',)),
       ),
     );
   }
@@ -126,5 +126,16 @@ class _ListaItinerariosState extends State<ListaItinerarios> {
     setState( () {
         items.removeAt(position);
     });
+  }
+
+  void _navegarParaItinerario(BuildContext context, Itinerario itinerario) async {
+    await Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CadItinerario(itinerario)),
+    );
+  }
+  void _criarNovoItinerario(BuildContext context, Itinerario itinerario) async {
+    await Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CadItinerario(Itinerario(null, '', '','',''))),
+    );
   }
 }

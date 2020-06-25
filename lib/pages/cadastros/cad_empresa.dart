@@ -3,14 +3,45 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jasaiu/menu.dart';
 import 'package:jasaiu/pages/escolha.dart';
+import '../../model/empresa.dart';
 
 class CadEmpresa extends StatefulWidget {
+
+  final Empresa empresa;
+  CadEmpresa(this.empresa);
+
   @override
   _CadEmpresaState createState() => _CadEmpresaState();
 }
 
 class _CadEmpresaState extends State<CadEmpresa> {
   
+  final db = Firestore.instance;
+
+  TextEditingController _nomeController;
+  TextEditingController _senhaController;
+  TextEditingController _emailController;
+  TextEditingController _telefoneController;
+  TextEditingController _cnpjController;
+  TextEditingController _enderecoController;
+  TextEditingController _bairroController;
+  TextEditingController _cidadeController;
+  TextEditingController _estadoController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nomeController = new TextEditingController(text: widget.empresa.nome);
+    _senhaController = new TextEditingController(text: widget.empresa.senha);
+    _emailController = new TextEditingController(text: widget.empresa.email);
+    _telefoneController = new TextEditingController(text: widget.empresa.telefone);
+    _cnpjController = new TextEditingController(text: widget.empresa.cnpj);
+    _enderecoController = new TextEditingController(text: widget.empresa.endereco);
+    _bairroController = new TextEditingController(text: widget.empresa.bairro);
+    _cidadeController = new TextEditingController(text: widget.empresa.cidade);
+    _estadoController = new TextEditingController(text: widget.empresa.estado);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack( // <-- STACK AS THE SCAFFOLD PARENT
@@ -49,10 +80,19 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
 
                   SizedBox(
-                    height: 20,
+                    height: 44,
+                    child: Text(
+                      "Cadastro de Empresa",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
 
                   TextFormField(
+                    controller: _nomeController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -76,7 +116,8 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
 
                   TextFormField(
-
+                    
+                    controller: _senhaController,
                     autofocus: true,
                     obscureText: true,
                     keyboardType: TextInputType.text,
@@ -99,6 +140,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
 
                   TextFormField(
+                    controller: _emailController,
                     autofocus: true,
                     keyboardType: TextInputType.emailAddress,
                     style: new TextStyle(
@@ -122,6 +164,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
                   
                   TextFormField(
+                    controller: _telefoneController,
                     autofocus: true,
                     keyboardType: TextInputType.phone,
                     style: new TextStyle(
@@ -145,6 +188,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
                   
                   TextFormField(
+                    controller: _cnpjController,
                     autofocus: true,
                     keyboardType: TextInputType.number,
                     style: new TextStyle(
@@ -168,6 +212,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
                   
                   TextFormField(
+                    controller: _enderecoController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -191,6 +236,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
                   
                   TextFormField(
+                    controller: _bairroController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -214,6 +260,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
                   
                   TextFormField(
+                    controller: _cidadeController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -237,6 +284,7 @@ class _CadEmpresaState extends State<CadEmpresa> {
                   ),
                   
                   TextFormField(
+                    controller: _estadoController,
                     autofocus: true,
                     keyboardType: TextInputType.text,
                     style: new TextStyle(
@@ -264,19 +312,46 @@ class _CadEmpresaState extends State<CadEmpresa> {
                     height: 60,
                     child: RaisedButton( 
 
-                      child: Text(
-                        "Cadastrar",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
                       
+                      child: (
+                        widget.empresa.id != null) ? Text('Atualizar') : Text('Cadastrar'),
+                        textColor: Colors.white,
                       color: Colors.blue[800],
-                      onPressed: () => {
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) )
-                      },
+                      onPressed: () {
 
+                        if(widget.empresa.id != null) {
+                          db.collection("empresas").document(widget.empresa.id).setData(
+                            {
+                              "nome": _nomeController.text,
+                              "senha": _senhaController.text,
+                              "email": _emailController.text,
+                              "telefone": _telefoneController.text,
+                              "cnpj": _cnpjController.text,
+                              "endereco": _enderecoController.text,
+                              "bairro": _bairroController.text,
+                              "cidade": _cidadeController.text,
+                              "estado": _estadoController.text,
+                            }
+                          );
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) );
+                        }else{
+                          db.collection("empresas").document(widget.empresa.id).setData(
+                            {
+                              "nome": _nomeController.text,
+                              "senha": _senhaController.text,
+                              "email": _emailController.text,
+                              "telefone": _telefoneController.text,
+                              "cnpj": _cnpjController.text,
+                              "endereco": _enderecoController.text,
+                              "bairro": _bairroController.text,
+                              "cidade": _cidadeController.text,
+                              "estado": _estadoController.text,
+                            }
+                          );
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadEmpresa(null) ) );
+                        }
+
+                      },
                     ),
                   ),
 

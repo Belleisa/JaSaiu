@@ -1,4 +1,4 @@
-class Aluno {
+class Empresa {
   String _id;
   String _nome;
   String _senha;
@@ -10,9 +10,9 @@ class Aluno {
   String _cidade;
   String _estado;
 
-  Aluno(this._id, this._nome, this._senha, this._email, this._telefone, this._cnpj, this._endereco, this._bairro, this._cidade, this._estado);
+  Empresa(this._id, this._nome, this._senha, this._email, this._telefone, this._cnpj, this._endereco, this._bairro, this._cidade, this._estado);
 
-  Aluno.map(dynamic obj) {
+  Empresa.map(dynamic obj) {
     this._id = obj['id']; 
     this._nome = obj['nome'];
     this._senha = obj['senha'];  
@@ -30,7 +30,7 @@ class Aluno {
   String get senha => _senha;
   String get email => _email;
   String get telefone => _telefone;
-  String get cpf => _cnpj;
+  String get cnpj => _cnpj;
   String get endereco => _endereco;
   String get bairro => _bairro;
   String get cidade => _cidade;
@@ -44,7 +44,7 @@ class Aluno {
     map['nome'] = _nome;
     map['email'] = _email;
     map['telefone'] = _telefone;
-    map['cpf'] = _cnpj;
+    map['cnpj'] = _cnpj;
     map['endereco'] = _endereco;
     map['bairro'] = _bairro;
     map['cidade'] = _cidade;
@@ -53,7 +53,7 @@ class Aluno {
     return map;
   }
 
-  Aluno.fromMap(Map<String, dynamic> map, String id){
+  Empresa.fromMap(Map<String, dynamic> map, String id){
     this._id = id ?? '';
     this._nome = map['nome'];
     this._senha = map['senha'];

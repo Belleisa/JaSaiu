@@ -17,8 +17,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-sqs
-        compile group: 'com.amazonaws', name: 'aws-java-sdk-sqs', version: '1.11.808'
     }
 }
 

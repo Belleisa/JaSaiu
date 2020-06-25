@@ -94,7 +94,9 @@ class _ListaOnibusState extends State<ListaOnibus> {
                                 }
                               )
                             ],
-                          )
+                          ),
+                          onTap: ()=> _navegarParaOnibus(context,items[index]),
+                        
                         );
                       },
                     );
@@ -108,9 +110,8 @@ class _ListaOnibusState extends State<ListaOnibus> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.blue[800],
-        onPressed: () => {
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadOnibus() ))
-        },
+        onPressed: () => _criarNovoOnibus(context, Onibus(null,'','','','','','','','')),
+      
       ),
     );
   }
@@ -126,5 +127,16 @@ class _ListaOnibusState extends State<ListaOnibus> {
     setState( () {
         items.removeAt(position);
     });
+  }
+
+  void _navegarParaOnibus(BuildContext context, Onibus onibus) async {
+    await Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CadOnibus(onibus)),
+    );
+  }
+  void _criarNovoOnibus(BuildContext context, Onibus onibus) async {
+    await Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CadOnibus(Onibus(null, '', '','','','','','',''))),
+    );
   }
 }
