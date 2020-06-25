@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/pages/login.dart';
 
 class Senha extends StatefulWidget {
   @override
@@ -44,9 +45,27 @@ class _SenhaState extends State<Senha> {
                     child: Image.asset("assets/logo_JaSaiu.png")
                   ),
 
-                  SizedBox(
-                    height: 20,
-                  ),
+                  
+                    SizedBox(
+                      height: 30,
+                    ),
+    
+                    SizedBox(
+                      height: 40,
+                      child: Text(
+                        "Recuperar Senha",
+                        style: TextStyle(
+                          color: Colors.blue[800],
+                          fontSize: 30,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+    
+                    SizedBox(
+                      height: 30,
+                    ),
+
 
                   TextFormField(
                     autofocus: true,
@@ -91,6 +110,26 @@ class _SenhaState extends State<Senha> {
                     ),
                   ),
                   
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Container(
+
+                    height: 40,
+                    alignment: Alignment.center,
+                    child: FlatButton(
+                      child: Text(
+                        "Cancelar",
+                        textAlign: TextAlign.center,
+                      ),
+
+                      onPressed: () => {
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login() ) )
+                      }, 
+                      
+                    ),
+
+                  ),
 
                 ],
               )

@@ -22,7 +22,7 @@ class _MenuState extends State<Menu> {
     Home(),
     ListaMotoristas(),
     ListaOnibus(),
-    ListaItinerarios,
+    ListaItinerarios(),
     ListaAlunos(),
   ];
   @override

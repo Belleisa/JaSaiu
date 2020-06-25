@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
         body: Container (
           
           padding: EdgeInsets.only(
-            top: 60,
+            top: 40,
             left: 40,
             right: 40,
           ),
@@ -45,9 +45,26 @@ class _LoginState extends State<Login> {
                     child: Image.asset("assets/logo_JaSaiu.png")
                   ),
 
-                  SizedBox(
-                    height: 20,
-                  ),
+                  
+                    SizedBox(
+                      height: 30,
+                    ),
+    
+                    SizedBox(
+                      height: 40,
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          color: Colors.blue[800],
+                          fontSize: 30,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+    
+                    SizedBox(
+                      height: 30,
+                    ),
 
                   TextFormField(
                     autofocus: true,

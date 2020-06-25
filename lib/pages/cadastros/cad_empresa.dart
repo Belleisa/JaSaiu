@@ -333,23 +333,10 @@ class _CadEmpresaState extends State<CadEmpresa> {
                               "estado": _estadoController.text,
                             }
                           );
-                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) );
-                        }else{
-                          db.collection("empresas").document(widget.empresa.id).setData(
-                            {
-                              "nome": _nomeController.text,
-                              "senha": _senhaController.text,
-                              "email": _emailController.text,
-                              "telefone": _telefoneController.text,
-                              "cnpj": _cnpjController.text,
-                              "endereco": _enderecoController.text,
-                              "bairro": _bairroController.text,
-                              "cidade": _cidadeController.text,
-                              "estado": _estadoController.text,
-                            }
-                          );
-                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadEmpresa(null) ) );
+                          _criarNovaEmpresa(context, Empresa(null,'','','','','','','','',''));
                         }
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) );
+                        
 
                       },
                     ),
@@ -390,5 +377,10 @@ class _CadEmpresaState extends State<CadEmpresa> {
       ]
     );
     
+  }
+  void _criarNovaEmpresa(BuildContext context, Empresa empresa) async {
+    await Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CadEmpresa(Empresa(null, '', '','','','','','','',''))),
+    );
   }
 }
