@@ -42,6 +42,8 @@ class _CadEmpresaState extends State<CadEmpresa> {
     _estadoController = new TextEditingController(text: widget.empresa.estado);
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Stack( // <-- STACK AS THE SCAFFOLD PARENT
@@ -54,326 +56,374 @@ class _CadEmpresaState extends State<CadEmpresa> {
             ),
           ),
         ),
-      Scaffold(
-        body: Container (
-          
-          padding: EdgeInsets.only(
-            top: 60,
-            left: 40,
-            right: 40,
-          ),
+        Scaffold(
+          body: Container (
+            
+            padding: EdgeInsets.only(
+              top: 60,
+              left: 40,
+              right: 40,
+            ),
 
-          child: Center (
+            child: Center (
 
-            child: SingleChildScrollView(
-              
-              child: Column(
-        
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-
-                  SizedBox(
-                    width: 128,
-                    height: 128,
-                    child: Image.asset("assets/logo_JaSaiu.png")
-                  ),
-
-                  SizedBox(
-                    height: 44,
-                    child: Text(
-                      "Cadastro de Empresa",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-
-                  TextFormField(
-                    controller: _nomeController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Nome da Empresa",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  TextFormField(
-                    
-                    controller: _senhaController,
-                    autofocus: true,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Senha",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  TextFormField(
-                    controller: _emailController,
-                    autofocus: true,
-                    keyboardType: TextInputType.emailAddress,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "E-mail",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-  
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _telefoneController,
-                    autofocus: true,
-                    keyboardType: TextInputType.phone,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Número de Telefone",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _cnpjController,
-                    autofocus: true,
-                    keyboardType: TextInputType.number,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "CNPJ",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _enderecoController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Endereço",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _bairroController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Bairro",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _cidadeController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Cidade",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _estadoController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Estado",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-  
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  ButtonTheme(
-
-                    height: 60,
-                    child: RaisedButton( 
-
-                      
-                      child: (
-                        widget.empresa.id != null) ? Text('Atualizar') : Text('Cadastrar'),
-                        textColor: Colors.white,
-                      color: Colors.blue[800],
-                      onPressed: () {
-
-                        if(widget.empresa.id != null) {
-                          db.collection("empresas").document(widget.empresa.id).setData(
-                            {
-                              "nome": _nomeController.text,
-                              "senha": _senhaController.text,
-                              "email": _emailController.text,
-                              "telefone": _telefoneController.text,
-                              "cnpj": _cnpjController.text,
-                              "endereco": _enderecoController.text,
-                              "bairro": _bairroController.text,
-                              "cidade": _cidadeController.text,
-                              "estado": _estadoController.text,
-                            }
-                          );
-                          _criarNovaEmpresa(context, Empresa(null,'','','','','','','','',''));
-                        }
-                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) );
-                        
-
-                      },
-                    ),
-                  ),
-
+              child: SingleChildScrollView(
                 
-                  SizedBox(
-                    height: 40,
-                  ),
-                  
-                  Container(
+                child: Column(
+          
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
 
-                    height: 40,
-                    alignment: Alignment.center,
-                    child: FlatButton(
+                    SizedBox(
+                      width: 128,
+                      height: 128,
+                      child: Image.asset("assets/logo_JaSaiu.png")
+                    ),
+
+                    SizedBox(
+                      height: 44,
                       child: Text(
-                        "Cancelar",
+                        "Cadastro de Empresa",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                        ),
                         textAlign: TextAlign.center,
                       ),
-
-                      onPressed: () => {
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Escolha() ) )
-                      }, 
-                      
                     ),
 
-                  ),
+                    Form(
+                      key: _formKey,
+                        child: Column(
+                          children: <Widget>[
 
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
+                          TextFormField(
+                            validator: (value){
+                              if (value.isEmpty) return "O campo é obrigatório.";
+                              //if (value.length < 5) return "O campo precisa ter mais de 4 caracteres.";
+                              return null;
+                            },
+                            controller: _nomeController,
+                            autofocus: true,
+                            keyboardType: TextInputType.text,
+                            style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20
+                            ),
+
+                            decoration: InputDecoration(
+                              labelText: "* Nome da Empresa",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                              ),
+                            ),
+
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+
+                          TextFormField(
+                            
+                            validator: (value){
+                              if (value.isEmpty) return "O campo é obrigatório.";
+                              if (value.length < 8) return "O campo precisa ter 8 ou mais caracteres.";
+                              return null;
+                            },
+                            controller: _senhaController,
+                            autofocus: true,
+                            obscureText: true,
+                            keyboardType: TextInputType.text,
+                            style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20
+                            ),
+
+                            decoration: InputDecoration(
+                              labelText: "* Senha",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+
+                          TextFormField(
+                            validator: (value){
+                              if (value.isEmpty) return "O campo é obrigatório.";
+                              return null;
+                            },
+                            controller: _emailController,
+                            autofocus: true,
+                            keyboardType: TextInputType.emailAddress,
+                            style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20
+                            ),
+
+                            decoration: InputDecoration(
+                              labelText: "* E-mail",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                              ),
+                            ),
+
+                          ),
+          
+                          SizedBox(
+                            height: 20,
+                          ),
+                          
+                          TextFormField(
+                            validator: (value){
+                              if (value.isEmpty) return "O campo é obrigatório.";
+                              return null;
+                            },
+                            controller: _telefoneController,
+                            autofocus: true,
+                            keyboardType: TextInputType.phone,
+                            style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20
+                            ),
+
+                            decoration: InputDecoration(
+                              labelText: "* Número de Telefone",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                              ),
+                            ),
+
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+                          
+                          TextFormField(
+                            validator: (value){
+                              if (value.isEmpty) return "O campo é obrigatório.";
+                              return null;
+                            },
+                            controller: _cnpjController,
+                            autofocus: true,
+                            keyboardType: TextInputType.number,
+                            style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20
+                            ),
+
+                            decoration: InputDecoration(
+                              labelText: "* CNPJ",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                              ),
+                            ),
+
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+                          
+                          TextFormField(
+                            validator: (value){
+                              if (value.isEmpty) return "O campo é obrigatório.";
+                              return null;
+                            },
+                            controller: _enderecoController,
+                            autofocus: true,
+                            keyboardType: TextInputType.text,
+                            style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20
+                            ),
+
+                            decoration: InputDecoration(
+                              labelText: "* Endereço",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                              ),
+                            ),
+
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+                          
+                          TextFormField(
+                            validator: (value){
+                              if (value.isEmpty) return "O campo é obrigatório.";
+                              return null;
+                            },
+                            controller: _bairroController,
+                            autofocus: true,
+                            keyboardType: TextInputType.text,
+                            style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20
+                            ),
+
+                            decoration: InputDecoration(
+                              labelText: "* Bairro",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                              ),
+                            ),
+
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+                          
+                          TextFormField(
+                            validator: (value){
+                              if (value.isEmpty) return "O campo é obrigatório.";
+                              return null;
+                            },
+                            controller: _cidadeController,
+                            autofocus: true,
+                            keyboardType: TextInputType.text,
+                            style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20
+                            ),
+
+                            decoration: InputDecoration(
+                              labelText: "* Cidade",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                              ),
+                            ),
+
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+                          
+                          TextFormField(
+                            validator: (value){
+                              if (value.isEmpty) return "O campo é obrigatório.";
+                              return null;
+                            },
+                            controller: _estadoController,
+                            autofocus: true,
+                            keyboardType: TextInputType.text,
+                            style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20
+                            ),
+
+                            decoration: InputDecoration(
+                              labelText: "* Estado",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                              ),
+                            ),
+
+                          ),
+          
+                          SizedBox(
+                            height: 20,
+                          ),
+                          
+                          ButtonTheme(
+
+                            height: 60,
+                            child: RaisedButton( 
+
+                              
+                              child: (
+                                widget.empresa.id != null) ? Text('Atualizar') : Text('Cadastrar'),
+                                textColor: Colors.white,
+                              color: Colors.blue[800],
+                              onPressed: () {
+
+                              if (_formKey.currentState.validate()) {
+
+                                if(widget.empresa.id != null) {
+                                  db.collection("empresas").document(widget.empresa.id).setData(
+                                    {
+                                      "nome": _nomeController.text,
+                                      "senha": _senhaController.text,
+                                      "email": _emailController.text,
+                                      "telefone": _telefoneController.text,
+                                      "cnpj": _cnpjController.text,
+                                      "endereco": _enderecoController.text,
+                                      "bairro": _bairroController.text,
+                                      "cidade": _cidadeController.text,
+                                      "estado": _estadoController.text,
+                                    }
+                                  );
+                                  _criarNovaEmpresa(context, Empresa(null,'','','','','','','','',''));
+                                }
+                                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) );
+                                
+                              }
+                              },
+                            ),
+                          ),
+
+                        
+                          SizedBox(
+                            height: 40,
+                          ),
+                          
+                          Container(
+
+                              height: 40,
+                              alignment: Alignment.center,
+                              child: FlatButton(
+                                child: Text(
+                                  "Cancelar",
+                                  textAlign: TextAlign.center,
+                                ),
+
+                                onPressed: () => {
+                                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Escolha() ) )
+                                }, 
+                                
+                              ),
+
+                          ),
+
+                          SizedBox(
+                          height: 20,
+                          ),
+                        ],
+                      )
+                    )
+                  ]
+                )
               )
-            )
+            ) 
           )
         )
-      )
       ]
     );
     

@@ -38,6 +38,8 @@ class _CadOnibusState extends State<CadOnibus> {
     _estadoController = new TextEditingController(text: widget.onibus.estado);
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,253 +65,294 @@ class _CadOnibusState extends State<CadOnibus> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  TextFormField(
-                    controller: _nomeController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Nome Completo do Dono",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                
-                  TextFormField(
-                    controller: _emailController,
-                    autofocus: true,
-                    keyboardType: TextInputType.emailAddress,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "E-mail para Contato",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-  
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _telefoneController,
-                    autofocus: true,
-                    keyboardType: TextInputType.phone,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Número de Telefone",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _marcaController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Marca",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-                
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _modeloController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Modelo",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
-  
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _placaController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Placa",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
-
-                  ),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
 
 
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _cidadeController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
+                        TextFormField(
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            //if (value.length < 5) return "O campo precisa ter mais de 4 caracteres.";
+                            return null;
+                          },
+                          controller: _nomeController,
+                          autofocus: true,
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
 
-                    decoration: InputDecoration(
-                      labelText: "Cidade",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
+                          decoration: InputDecoration(
+                            labelText: "* Nome Completo do Dono",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                            ),
+                          ),
 
-                  ),
+                        ),
 
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  TextFormField(
-                    controller: _estadoController,
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
+                        SizedBox(
+                          height: 20,
+                        ),
 
-                    decoration: InputDecoration(
-                      labelText: "Estado",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
+                      
+                        TextFormField(
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            if (value.length < 8) return "O campo precisa ter 8 ou mais caracteres.";
+                            return null;
+                          },
+                          controller: _emailController,
+                          autofocus: true,
+                          keyboardType: TextInputType.emailAddress,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
 
-                  ),
+                          decoration: InputDecoration(
+                            labelText: "* E-mail para Contato",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                            ),
+                          ),
 
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
-                  ButtonTheme(
+                        ),
+        
+                        SizedBox(
+                          height: 20,
+                        ),
+                        
+                        TextFormField(
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            //if (value.length < 5) return "O campo precisa ter mais de 4 caracteres.";
+                            return null;
+                          },
+                          controller: _telefoneController,
+                          autofocus: true,
+                          keyboardType: TextInputType.phone,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
 
-                    height: 60,
-                    child: RaisedButton( 
+                          decoration: InputDecoration(
+                            labelText: "* Número de Telefone",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                            ),
+                          ),
 
-                      child: (
-                        widget.onibus.id != null) ? Text('Atualizar') : Text('Cadastrar'),
-                        textColor: Colors.white,
-                      color: Colors.blue[800],
-                      onPressed: () {
+                        ),
 
-                        if(widget.onibus.id != null) {
-                          db.collection("onibus").document(widget.onibus.id).setData(
-                            {
-                              "nome": _nomeController.text,
-                              "email": _emailController.text,
-                              "telefone": _telefoneController.text,
-                              "marca": _marcaController.text,
-                              "modelo": _modeloController.text,
-                              "placa": _placaController.text,
-                              "cidade": _cidadeController.text,
-                              "estado": _estadoController.text,
-                            }
-                          );
-                          Navigator.pop(context);
-                        }else{
-                          db.collection("onibus").document(widget.onibus.id).setData(
-                            {
-                              "nome": _nomeController.text,
-                              "email": _emailController.text,
-                              "telefone": _telefoneController.text,
-                              "marca": _marcaController.text,
-                              "modelo": _modeloController.text,
-                              "placa": _placaController.text,
-                              "cidade": _cidadeController.text,
-                              "estado": _estadoController.text,
-                            }
-                          );
-                          Navigator.pop(context);
-                        }
-                      },
-                    ),
-                  ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        
+                        TextFormField(
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            return null;
+                          },
+                          controller: _marcaController,
+                          autofocus: true,
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
 
-                  SizedBox(
-                    height: 50,
-                  ),
-                ],
+                          decoration: InputDecoration(
+                            labelText: "* Marca",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                            ),
+                          ),
+
+                        ),
+                      
+                        SizedBox(
+                          height: 20,
+                        ),
+                        
+                        TextFormField(
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            return null;
+                          },
+                          controller: _modeloController,
+                          autofocus: true,
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
+
+                          decoration: InputDecoration(
+                            labelText: "* Modelo",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                            ),
+                          ),
+
+                        ),
+        
+                        SizedBox(
+                          height: 20,
+                        ),
+                        
+                        TextFormField(
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            return null;
+                          },
+                          controller: _placaController,
+                          autofocus: true,
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
+
+                          decoration: InputDecoration(
+                            labelText: "* Placa",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                            ),
+                          ),
+
+                        ),
+
+
+                        SizedBox(
+                          height: 20,
+                        ),
+                        
+                        TextFormField(
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            return null;
+                          },
+                          controller: _cidadeController,
+                          autofocus: true,
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
+
+                          decoration: InputDecoration(
+                            labelText: "* Cidade",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                            ),
+                          ),
+
+                        ),
+
+                        SizedBox(
+                          height: 20,
+                        ),
+                        
+                        TextFormField(
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            return null;
+                          },
+                          controller: _estadoController,
+                          autofocus: true,
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
+
+                          decoration: InputDecoration(
+                            labelText: "* Estado",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                            ),
+                          ),
+
+                        ),
+
+                        SizedBox(
+                          height: 20,
+                        ),
+                        
+                        ButtonTheme(
+
+                          height: 60,
+                          child: RaisedButton( 
+
+                            child: (
+                              widget.onibus.id != null) ? Text('Atualizar') : Text('Cadastrar'),
+                              textColor: Colors.white,
+                            color: Colors.blue[800],
+                            onPressed: () {
+                              if (_formKey.currentState.validate()) {
+
+                                if(widget.onibus.id != null) {
+                                  db.collection("onibus").document(widget.onibus.id).setData(
+                                    {
+                                      "nome": _nomeController.text,
+                                      "email": _emailController.text,
+                                      "telefone": _telefoneController.text,
+                                      "marca": _marcaController.text,
+                                      "modelo": _modeloController.text,
+                                      "placa": _placaController.text,
+                                      "cidade": _cidadeController.text,
+                                      "estado": _estadoController.text,
+                                    }
+                                  );
+                                  Navigator.pop(context);
+                                }else{
+                                  db.collection("onibus").document(widget.onibus.id).setData(
+                                    {
+                                      "nome": _nomeController.text,
+                                      "email": _emailController.text,
+                                      "telefone": _telefoneController.text,
+                                      "marca": _marcaController.text,
+                                      "modelo": _modeloController.text,
+                                      "placa": _placaController.text,
+                                      "cidade": _cidadeController.text,
+                                      "estado": _estadoController.text,
+                                    }
+                                  );
+                                  Navigator.pop(context);
+                                }
+                              }
+                            },
+                          ),
+                        ),
+
+                        SizedBox(
+                          height: 50,
+                        ),
+                      ],
+                    )
+                  )
+                ]
               )
             )
           )
