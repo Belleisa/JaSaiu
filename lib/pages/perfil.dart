@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jasaiu/services/auth.dart';
 class Perfil extends StatefulWidget {
   @override
   _PerfilState createState() => _PerfilState();
@@ -7,19 +8,27 @@ class Perfil extends StatefulWidget {
 
 class _PerfilState extends State<Perfil> {
   
+  AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
-    return Stack( // <-- STACK AS THE SCAFFOLD PARENT
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/background-branco.jpg"), // <-- BACKGROUND IMAGE
-              fit: BoxFit.cover,
-            ),
-          ),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Perfil"),
+          centerTitle: true,
+          backgroundColor: Colors.blue[800],
+          actions: <Widget>[
+            FlatButton.icon(
+              icon: Icon(Icons.power_settings_new),
+              label: Text(
+                "Logout"
+              ),
+              onPressed: () async {
+                await _auth.signOut();
+              },
+            )
+          ]
         ),
-      Scaffold(
         body: Container (
           
           padding: EdgeInsets.only(
@@ -36,11 +45,7 @@ class _PerfilState extends State<Perfil> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
 
-                  SizedBox(
-                    width: 128,
-                    height: 128,
-                    child: Image.asset("assets/logo_JaSaiu.png")
-                  ),
+                  
 
                 
                 ],
@@ -48,9 +53,9 @@ class _PerfilState extends State<Perfil> {
             )
           )
         )
-      )
-      ]
-    );
+      );
+      
+    
     
   }
 }

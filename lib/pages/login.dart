@@ -1,17 +1,43 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jasaiu/menu.dart';
-import 'package:jasaiu/pages/escolha.dart';
+import 'package:jasaiu/model/user.dart';
 import 'package:jasaiu/pages/senha.dart';
+import 'package:jasaiu/services/auth.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
+
+  final Function toggleView;
+  Login({this.toggleView});
+
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+
+  final _formKey = GlobalKey<FormState>();
+
+  final db = Firestore.instance;
+  final AuthService _auth = AuthService();
+
+  // text field state
+  String email = '';
+  String senha = '';
+  String error = '';
+
+  TextEditingController _senhaController;
+  TextEditingController _emailController;
+
+   
+     
   @override
   Widget build(BuildContext context) {
+  
+  final user = Provider.of<User>(context);
+  print(user);
+  
     return Stack( // <-- STACK AS THE SCAFFOLD PARENT
       children: [
         Container(
@@ -66,77 +92,115 @@ class _LoginState extends State<Login> {
                       height: 30,
                     ),
 
-                  TextFormField(
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
 
-                    decoration: InputDecoration(
-                      labelText: "CPF ou e-mail",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      ),
-                    ),
+                        TextFormField(
+                          onChanged: (value) {
+                            setState(() => email = value);
+                          },
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            //if (value.length < 5) return "O campo precisa ter mais de 4 caracteres.";
+                            return null;
+                          },
+                          controller: _emailController,
+                          autofocus: true,
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
 
-                  ),
+                          decoration: InputDecoration(
+                            labelText: "* E-mail",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                            ),
+                          ),
 
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  TextFormField(
-
-                    autofocus: true,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
-
-                    decoration: InputDecoration(
-                      labelText: "Senha",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  ButtonTheme(
-
-                    height: 60,
-                    child: RaisedButton( 
-
-                      child: Text(
-                        "Entrar",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
                         ),
-                      ),
-                      
-                      color: Colors.blue[800],
-                      onPressed: () => {
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) )
-                      },
 
-                    ),
+                        SizedBox(
+                          height: 20,
+                        ),
+
+                        TextFormField(
+                          onChanged: (value) {
+                            setState(() => senha = value);
+                          },
+                          validator: (value){
+                            if (value.isEmpty) return "O campo é obrigatório.";
+                            if (value.length < 8) return "O campo precisa ter 8 ou mais caracteres.";
+                            return null;
+                          },
+                          controller: _senhaController,
+                          autofocus: true,
+                          obscureText: true,
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                          ),
+
+                          decoration: InputDecoration(
+                            labelText: "* Senha",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+
+                        ),
+
+                        SizedBox(
+                          height: 20,
+                        ),
+
+                        ButtonTheme(
+
+                          height: 60,
+                          child: RaisedButton( 
+
+                            child: Text(
+                              "Entrar",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                            
+                            color: Colors.blue[800],
+                            onPressed: () async {
+
+                              if (_formKey.currentState.validate()) {
+                                dynamic result = await _auth.signInWithEmailESenha(email, senha);
+                                if (result == null){
+                                  setState(() => error = 'Credenciais inválidas');
+                                }
+                                  //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) );
+                                            
+                              }
+                            },
+
+                          ),
+                        ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red, fontSize: 14),
+                          ),
+                          
+                      ]
+                    )
                   ),
 
-                  SizedBox(
-                    height: 20,
-                  ),
-                  
+
                   Container(
 
                     height: 40,
@@ -155,6 +219,10 @@ class _LoginState extends State<Login> {
 
                   ),
 
+                  SizedBox(
+                    height: 30,
+                  ),
+                  
                   Container(
 
                     height: 40,
@@ -166,7 +234,7 @@ class _LoginState extends State<Login> {
                       ),
 
                       onPressed: () => {
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Escolha() ) )
+                        widget.toggleView()
                       }, 
                       
                     ),
@@ -179,7 +247,9 @@ class _LoginState extends State<Login> {
         )
       )
       ]
+    
     );
     
+
   }
 }

@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:jasaiu/pages/escolha.dart';
+import 'package:jasaiu/services/auth.dart';
+import 'package:jasaiu/wrapper.dart';
+import 'package:provider/provider.dart';
+
+import 'model/user.dart';
 
 
-void main() => runApp(MaterialApp(
-  title: 'Já Saiu?',
-  home: Escolha(),
-  debugShowCheckedModeBanner: false,
-));
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+  return StreamProvider<User>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        home: Wrapper(),                  
+        debugShowCheckedModeBanner: false,
+      )
+    );
+  }
+
+}

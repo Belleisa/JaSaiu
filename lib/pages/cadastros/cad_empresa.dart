@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jasaiu/menu.dart';
 import 'package:jasaiu/pages/escolha.dart';
+import 'package:jasaiu/services/auth.dart';
 import '../../model/empresa.dart';
 
 class CadEmpresa extends StatefulWidget {
@@ -43,6 +44,12 @@ class _CadEmpresaState extends State<CadEmpresa> {
   }
 
   final _formKey = GlobalKey<FormState>();
+  final AuthService _auth = AuthService();
+
+  // text field state
+  String email = '';
+  String senha = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +135,9 @@ class _CadEmpresaState extends State<CadEmpresa> {
                           ),
 
                           TextFormField(
-                            
+                          onChanged: (value) {
+                            setState(() => senha = value);
+                          },                            
                             validator: (value){
                               if (value.isEmpty) return "O campo é obrigatório.";
                               if (value.length < 8) return "O campo precisa ter 8 ou mais caracteres.";
@@ -157,6 +166,9 @@ class _CadEmpresaState extends State<CadEmpresa> {
                           ),
 
                           TextFormField(
+                          onChanged: (value) {
+                            setState(() => email = value);
+                          },
                             validator: (value){
                               if (value.isEmpty) return "O campo é obrigatório.";
                               return null;
@@ -362,11 +374,16 @@ class _CadEmpresaState extends State<CadEmpresa> {
                                 widget.empresa.id != null) ? Text('Atualizar') : Text('Cadastrar'),
                                 textColor: Colors.white,
                               color: Colors.blue[800],
-                              onPressed: () {
+                              onPressed: () async {
 
                               if (_formKey.currentState.validate()) {
+                                dynamic result = await _auth.registerWithEmailESenha(email, senha);
+                                if (result == null){
+                                  setState(() => error = 'Informe email válido');
+                                } else{
+                                   await _auth.signInWithEmailESenha(email, senha);
 
-                                if(widget.empresa.id != null) {
+                                }
                                   db.collection("empresas").document(widget.empresa.id).setData(
                                     {
                                       "nome": _nomeController.text,
@@ -382,14 +399,21 @@ class _CadEmpresaState extends State<CadEmpresa> {
                                   );
                                   _criarNovaEmpresa(context, Empresa(null,'','','','','','','','',''));
                                 }
-                                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) );
-                                
-                              }
+                                  //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Menu() ) );
+                              
                               },
                             ),
                           ),
 
                         
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red, fontSize: 14),
+                          ),
+                          
                           SizedBox(
                             height: 40,
                           ),
@@ -415,6 +439,13 @@ class _CadEmpresaState extends State<CadEmpresa> {
                           SizedBox(
                           height: 20,
                           ),
+                          
+
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  
                         ],
                       )
                     )

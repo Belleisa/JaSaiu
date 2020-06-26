@@ -10,6 +10,8 @@ class Empresa {
   String _cidade;
   String _estado;
 
+  
+
   Empresa(this._id, this._nome, this._senha, this._email, this._telefone, this._cnpj, this._endereco, this._bairro, this._cidade, this._estado);
 
   Empresa.map(dynamic obj) {
@@ -42,6 +44,7 @@ class Empresa {
       map['id'] = _id;
     }
     map['nome'] = _nome;
+    map['senha'] = _senha;
     map['email'] = _email;
     map['telefone'] = _telefone;
     map['cnpj'] = _cnpj;

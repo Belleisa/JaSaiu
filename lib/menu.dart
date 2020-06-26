@@ -5,6 +5,7 @@ import 'package:jasaiu/pages/listas/lista_alunos.dart';
 import 'package:jasaiu/pages/listas/lista_itinerarios.dart';
 import 'package:jasaiu/pages/listas/lista_motoristas.dart';
 import 'package:jasaiu/pages/listas/lista_onibus.dart';
+import 'package:jasaiu/pages/perfil.dart';
 
 
 
@@ -24,6 +25,7 @@ class _MenuState extends State<Menu> {
     ListaOnibus(),
     ListaItinerarios(),
     ListaAlunos(),
+    Perfil(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -62,6 +64,11 @@ class _MenuState extends State<Menu> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.person),
                 title: Text('Alunos'),
+                backgroundColor: Colors.blue[800],
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                title: Text('Configurações'),
                 backgroundColor: Colors.blue[800],
             ),
         ],
