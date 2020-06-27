@@ -1,6 +1,5 @@
-import 'package:jasaiu/model/empresa.dart';
+
 import 'package:jasaiu/pages/cadastros/cad_empresa.dart';
-import 'package:jasaiu/pages/escolha.dart';
 
 import './login.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class _AuthenticateState extends State<Authenticate> {
     if (showSignIn) {
       return Login(toggleView: toggleView);
     } else{
-      return Escolha(toggleView: toggleView);
+      return CadEmpresa(toggleView: toggleView);
     }
   }
 }

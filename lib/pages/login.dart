@@ -166,7 +166,7 @@ class _LoginState extends State<Login> {
                           child: RaisedButton( 
 
                             child: Text(
-                              "Entrar",
+                              "          Entrar          ",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -220,26 +220,35 @@ class _LoginState extends State<Login> {
                   ),
 
                   SizedBox(
-                    height: 30,
-                  ),
-                  
-                  Container(
-
-                    height: 40,
-                    alignment: Alignment.center,
-                    child: FlatButton(
-                      child: Text(
-                        "Cancelar",
-                        textAlign: TextAlign.center,
-                      ),
-
-                      onPressed: () => {
+                      height: 50,
+                    ),
+    
+                    ButtonTheme(
+    
+                      height: 60,
+                      child: RaisedButton( 
+    
+                        child: Text(
+                          "Cadastro",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        
+                        color: Colors.blue[800],
+                        onPressed: () => {
                         widget.toggleView()
-                      }, 
-                      
+
+                        },
+    
+                      ),
+                    ),
+                    
+                  SizedBox(
+                      height: 50,
                     ),
 
-                  ),
                 ],
               )
             )

@@ -1,21 +1,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jasaiu/model/empresa.dart';
-import 'package:jasaiu/model/user.dart';
-import 'package:jasaiu/pages/authenticate.dart';
-import 'package:jasaiu/pages/cadastros/cad_empresa.dart';
-import 'package:jasaiu/pages/login.dart';
-import 'package:jasaiu/services/auth.dart';
-import 'package:jasaiu/wrapper.dart';
-import 'package:provider/provider.dart';
 
 
 class Escolha extends StatefulWidget {
 
-  final Function toggleView;
-  Escolha({this.toggleView});
-
+  
   @override
   _EscolhaState createState() => _EscolhaState();
 }
@@ -81,7 +71,7 @@ class _EscolhaState extends State<Escolha> {
                     SizedBox(
                       height: 50,
                     ),
-    
+    /*
                     ButtonTheme(
     
                       height: 60,
@@ -103,7 +93,7 @@ class _EscolhaState extends State<Escolha> {
     
                       ),
                     ),
-                    
+                    */
                     SizedBox(
                       height: 20,
                     ),
@@ -123,7 +113,7 @@ class _EscolhaState extends State<Escolha> {
                         
                         color: Colors.blue[800],
                         onPressed: () => {
-                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadEmpresa(Empresa(null, '','','','','','','','','')) ) )
+                         // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CadEmpresa(Empresa(null, '','','','','','','','','')) ) )
                     },
 
                   ),
